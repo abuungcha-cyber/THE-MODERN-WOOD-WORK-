@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Modern Wood Work | Jiribam, Manipur</title>
+  <style>
+    :root {
+      --bg: #fafaf9;
+      --card: #ffffff;
+      --text: #1c1917;
+      --muted: #57534e;
+      --border: #e7e5e4;
+      --amber-dark: #451a03;
+      --amber-mid: #78350f;
+      --amber-accent: #d97706;
+      --amber-light: #fef3c7;
+      --green: #059669;
+      --green-dark: #047857;
+      --red: #dc2626;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding-bottom: 84px;
+      line-height: 1.45;
+    }
+    header {
+      background: linear-gradient(135deg, var(--amber-dark), var(--amber-mid));
+      color: #fff;
+      padding: 28px 16px 24px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+    }
+    .header-top-actions {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      display: flex;
+      gap: 8px;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.14);
+      color: #fde68a;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+      letter-spacing: 0.4px;
+    }
+    header h1 {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      margin-bottom: 4px;
+    }
+    .owner-line {
+      font-size: 15px;
+      color: #fef3c7;
+      margin-bottom: 10px;
+    }
+    .owner-line strong { color: #fff; }
+    .contact-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      font-size: 13px;
+      color: #fde68a;
+    }
+    .contact-bar a {
+      color: #fff;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+    .category-pills {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      scrollbar-width: none;
+    }
+    .category-pills::-webkit-scrollbar { display: none; }
+    .pill {
+      white-space: nowrap;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+    .pill.active {
+      background: var(--amber-dark);
+      color: #fff;
+      border-color: var(--amber-dark);
+    }
+    .filter-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .filter-box input[type="text"],
+    .filter-box select {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1px solid #d6d3d1;
+      border-radius: 8px;
+      font-size: 14px;
+      background: #fff;
+    }
+    .price-filter {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .price-filter div {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+    .price-filter input[type="range"] {
+      width: 100%;
+      accent-color: var(--amber-mid);
+    }
+    .admin-toolbar {
+      background: var(--amber-light);
+      border: 1px solid #fcd34d;
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-bottom: 18px;
+      display: none;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .admin-toolbar.visible { display: flex; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .card-img-wrap {
+      position: relative;
+      height: 210px;
+      background: #e7e5e4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .card.sold .card-img-wrap img {
+      opacity: 0.45;
+      filter: grayscale(100%);
+    }
+    .cat-tag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(28, 25, 23, 0.85);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .sold-badge {
+      position: absolute;
+      background: var(--red);
+      color: #fff;
+      font-weight: 800;
+      font-size: 14px;
+      padding: 6px 16px;
+      border-radius: 8px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .card-body { padding: 14px 16px 10px; }
+    .card-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .card-title { font-size: 17px; font-weight: 700; color: var(--text); }
+    .card-price {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--amber-mid);
+      white-space: nowrap;
+    }
+    .meta {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .desc {
+      font-size: 13.5px;
+      color: #44403c;
+      margin-bottom: 8px;
+    }
+    .delivery-tag {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--amber-mid);
+    }
+    .card-actions { padding: 0 16px 12px; }
+    .btn-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .btn {
+      border: none;
+      border-radius: 8px;
+      padding: 9px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: 0.15s;
+    }
+    .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+    .btn-wa { background: var(--green); color: #fff; }
+    .btn-wa:hover:not(:disabled) { background: var(--green-dark); }
+    .btn-offer { background: var(--amber-light); color: var(--amber-dark); }
+    .btn-offer:hover:not(:disabled) { background: #fde68a; }
+    .btn-dark { background: var(--amber-dark); color: #fff; }
+    .btn-outline { background: #fff; border: 1px solid #d6d3d1; color: var(--text); }
+    .btn-danger { background: #fee2e2; color: var(--red); }
+    .social-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border);
+      padding-top: 8px;
+      gap: 4px;
+    }
+    .social-btn {
+      background: transparent;
+      border: none;
+      padding: 6px 4px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      border-radius: 6px;
+    }
+    .social-btn:hover { background: #f5f5f4; }
+    .social-btn.liked { color: var(--red); }
+    .owner-card-controls {
+      display: none;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed #d6d3d1;
+    }
+    .owner-card-controls.visible { display: grid; }
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-top: 1px solid var(--border);
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      gap: 8px;
+      z-index: 40;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.06);
+    }
+    .bottom-btn {
+      flex: 1;
+      max-width: 180px;
+      padding: 9px 10px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #fafaf9;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      cursor: pointer;
+    }
+    .bottom-btn.active {
+      background: var(--amber-dark);
+      color: #fff;
+      border-color: var(--amber-dark);
+    }
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 60;
+      overflow-y: auto;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal {
+      background: #fff;
+      border-radius: 14px;
+      width: 100%;
+      max-width: 480px;
+      padding: 20px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .modal-header h3 { font-size: 18px; font-weight: 800; }
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: var(--muted);
+    }
+    .form-group { margin-bottom: 12px; }
+    .form-group label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: #44403c;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 9px 11px;
+      border: 1px solid #d6d3d1;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: inherit;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .comment-list {
+      max-height: 220px;
+      overflow-y: auto;
+      margin-bottom: 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px;
+    }
+    .comment-item {
+      padding: 8px;
+      border-bottom: 1px solid #f5f5f4;
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .comment-item:last-child { border-bottom: none; }
+    .empty-state {
+      text-align: center;
+      padding: 48px 16px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .svg-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #f5f5f4;
+      color: #78716c;
+      font-size: 13px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-top-actions">
+      <button id="topOwnerBtn" class="btn btn-outline" style="padding:6px 12px;font-size:12px;">Owner Login</button>
+    </div>
+    <div class="badge" id="hdrBadge">Handcrafted Solid Wood Furniture</div>
+    <h1 id="hdrShopName">New Modern Wood Work</h1>
+    <p class="owner-line">Proprietor: <strong id="hdrOwnerName">Kumabum Kalachan Singh</strong></p>
+    <div class="contact-bar">
+      <span id="hdrAddress">Jiribam, Hilghat, Sorok Atingbi, Manipur 795116</span>
+      <span>•</span>
+      <a id="hdrPhoneLink" href="tel:+919612454569">+919612454569</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div id="adminToolbar" class="admin-toolbar">
+      <strong style="font-size:13.5px;color:#78350f;">Owner Mode Unlocked</strong>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        <button class="btn btn-dark" onclick="openAddModal()">+ Add Furniture</button>
+        <button class="btn btn-outline" onclick="openShopModal()">Edit Shop Info</button>
+        <button class="btn btn-outline" onclick="exportHtmlFile()">Export Updated HTML</button>
+        <button class="btn btn-danger" onclick="lockOwnerMode()">Lock</button>
+      </div>
+    </div>
+
+    <div class="category-pills" id="categoryPills"></div>
+
+    <div class="filter-box">
+      <input type="text" id="searchInput" placeholder="Search bed, sofa, door, teak..." oninput="renderItems()" />
+      <select id="categorySelect" onchange="syncCategoryFromSelect()">
+        <option value="All">All Categories</option>
+        <option value="Living Room">Living Room</option>
+        <option value="Bedroom">Bedroom</option>
+        <option value="Dining & Kitchen">Dining & Kitchen</option>
+        <option value="Office & Study">Office & Study</option>
+        <option value="Doors & Custom Woodwork">Doors & Custom Woodwork</option>
+      </select>
+      <select id="conditionSelect" onchange="renderItems()">
+        <option value="All">All Conditions</option>
+        <option value="Brand New">Brand New</option>
+        <option value="Custom Order">Custom Order</option>
+        <option value="Refurbished">Refurbished</option>
+      </select>
+      <div class="price-filter">
+        <div>
+          <span>Max Budget:</span>
+          <strong id="maxPriceLabel">₹1,50,000</strong>
+        </div>
+        <input type="range" id="maxPriceRange" min="1000" max="150000" step="1000" value="150000" oninput="updatePriceFilter()" />
+      </div>
+    </div>
+
+    <div id="furnitureGrid" class="grid"></div>
+  </div>
+
+  <div class="bottom-bar">
+    <button id="btnAllView" class="bottom-btn active" onclick="setSavedView(false)">Catalog</button>
+    <button id="btnSavedView" class="bottom-btn" onclick="setSavedView(true)">Saved (<span id="savedCount">0</span>)</button>
+    <button id="btnBuyerLogin" class="bottom-btn" onclick="openBuyerModal()">Buyer Login</button>
+    <button id="btnBottomEdit" class="bottom-btn" onclick="handleBottomEditClick()">Edit</button>
+  </div>
+
+  <div id="pinModal" class="modal-backdrop">
+    <div class="modal" style="max-width:380px;">
+      <div class="modal-header">
+        <h3 id="pinModalTitle">Owner Security Login</h3>
+        <button class="close-btn" onclick="closeModal('pinModal')">&times;</button>
+      </div>
+      <p id="pinModalDesc" style="font-size:13px;color:#57534e;margin-bottom:12px;">
+        Enter your Owner Passcode to add or edit shop items.
+      </p>
+      <div class="form-group">
+        <label>Owner Passcode</label>
+        <input type="password" id="pinInput" placeholder="Enter passcode" />
+      </div>
+      <button class="btn btn-dark" style="width:100%;" onclick="submitOwnerPasscode()">Continue</button>
+    </div>
+  </div>
+
+  <div id="itemModal" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="itemModalTitle">Add Furniture Item</h3>
+        <button class="close-btn" onclick="closeModal('itemModal')">&times;</button>
+      </div>
+      <form onsubmit="saveFurnitureItem(event)">
+        <input type="hidden" id="editItemId" />
+        <div class="form-group">
+          <label>Upload Photo (from phone or computer)</label>
+          <input type="file" id="itemPhotoFile" accept="image/*" onchange="handlePhotoSelect(event)" />
+          <div id="photoPreviewWrap" style="margin-top:8px;display:none;">
+            <img id="photoPreviewImg" style="width:100%;max-height:160px;object-fit:cover;border-radius:8px;" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Item Title *</label>
+            <input type="text" id="itemTitle" required placeholder="e.g. Carved Teak Main Door" />
+          </div>
+          <div class="form-group">
+            <label>Price (₹) *</label>
+            <input type="number" id="itemPrice" required placeholder="e.g. 24000" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Category</label>
+            <select id="itemCategory">
+              <option value="Living Room">Living Room</option>
+              <option value="Bedroom">Bedroom</option>
+              <option value="Dining & Kitchen">Dining & Kitchen</option>
+              <option value="Office & Study">Office & Study</option>
+              <option value="Doors & Custom Woodwork">Doors & Custom Woodwork</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Condition</label>
+            <select id="itemCondition">
+              <option value="Brand New">Brand New</option>
+              <option value="Custom Order">Custom Order</option>
+              <option value="Refurbished">Refurbished</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Wood / Material</label>
+            <input type="text" id="itemMaterial" placeholder="e.g. Solid Teak Wood" />
+          </div>
+          <div class="form-group">
+            <label>Dimensions</label>
+            <input type="text" id="itemDimensions" placeholder="e.g. 7ft x 3.5ft" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Delivery / Pickup</label>
+          <select id="itemDelivery">
+            <option value="Pickup or Local Delivery">Pickup or Local Delivery</option>
+            <option value="Pickup Only (Jiribam)">Pickup Only (Jiribam)</option>
+            <option value="Made to Order">Made to Order</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea id="itemDescription" rows="2" placeholder="Polish finish, wood quality, customization details..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-dark" style="width:100%;">Save Furniture Item</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="shopModal" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Edit All Shop Details</h3>
+        <button class="close-btn" onclick="closeModal('shopModal')">&times;</button>
+      </div>
+      <form onsubmit="saveShopDetails(event)">
+        <div class="form-group">
+          <label>Shop Name</label>
+          <input type="text" id="editShopName" required />
+        </div>
+        <div class="form-group">
+          <label>Proprietor / Owner Name</label>
+          <input type="text" id="editOwnerName" required />
+        </div>
+        <div class="form-group">
+          <label>Header Tagline Badge</label>
+          <input type="text" id="editBadge" />
+        </div>
+        <div class="form-group">
+          <label>Shop Address</label>
+          <input type="text" id="editAddress" required />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone Display</label>
+            <input type="text" id="editPhone" required />
+          </div>
+          <div class="form-group">
+            <label>WhatsApp Digits (with 91)</label>
+            <input type="text" id="editWhatsapp" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Set New Owner Passcode (leave blank to keep current)</label>
+          <input type="password" id="editNewPasscode" placeholder="Optional new passcode" />
+        </div>
+        <button type="submit" class="btn btn-dark" style="width:100%;">Update Shop Info</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="offerModal" class="modal-backdrop">
+    <div class="modal" style="max-width:420px;">
+      <div class="modal-header">
+        <h3>Make an Offer</h3>
+        <button class="close-btn" onclick="closeModal('offerModal')">&times;</button>
+      </div>
+      <p id="offerItemSummary" style="font-size:13.5px;color:#57534e;margin-bottom:12px;"></p>
+      <form onsubmit="sendOfferWhatsApp(event)">
+        <div class="form-group">
+          <label>Your Offer Price (₹) *</label>
+          <input type="number" id="offerAmount" required placeholder="Enter amount in Rupees" />
+        </div>
+        <div class="form-group">
+          <label>Message / Delivery Area</label>
+          <textarea id="offerNote" rows="2" placeholder="e.g. Can you deliver near Jiribam Bazar?"></textarea>
+        </div>
+        <button type="submit" class="btn btn-wa" style="width:100%;">Send Offer on WhatsApp</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="commentModal" class="modal-backdrop">
+    <div class="modal" style="max-width:440px;">
+      <div class="modal-header">
+        <h3 id="commentModalTitle">Customer Questions & Comments</h3>
+        <button class="close-btn" onclick="closeModal('commentModal')">&times;</button>
+      </div>
+      <div id="commentList" class="comment-list"></div>
+      <form onsubmit="postComment(event)">
+        <div class="form-group">
+          <input type="text" id="commentAuthor" placeholder="Your Name" required />
+        </div>
+        <div class="form-group">
+          <textarea id="commentText" rows="2" placeholder="Ask about wood type, polish, or custom size..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-dark" style="width:100%;">Post Comment</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="buyerModal" class="modal-backdrop">
+    <div class="modal" style="max-width:400px;">
+      <div class="modal-header">
+        <h3>Buyer Profile</h3>
+        <button class="close-btn" onclick="closeModal('buyerModal')">&times;</button>
+      </div>
+      <p style="font-size:12.5px;color:#57534e;margin-bottom:12px;">
+        Save your details to auto-fill WhatsApp inquiries, offers, and comments.
+      </p>
+      <form onsubmit="saveBuyerProfile(event)">
+        <div class="form-group">
+          <label>Your Name *</label>
+          <input type="text" id="buyerName" required placeholder="Enter your name" />
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" id="buyerPhone" placeholder="e.g. +919862XXXXXX" />
+        </div>
+        <div class="form-group">
+          <label>Village / Town</label>
+          <input type="text" id="buyerCity" placeholder="e.g. Jiribam, Babupara" />
+        </div>
+        <div style="display:flex;gap:8px;">
+          <button type="submit" class="btn btn-dark" style="flex:1;">Save Profile</button>
+          <button type="button" id="buyerLogoutBtn" class="btn btn-danger" style="display:none;" onclick="logoutBuyer()">Logout</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script id="store-data-script">
+    const CATEGORIES = [
+      "All",
+      "Living Room",
+      "Bedroom",
+      "Dining & Kitchen",
+      "Office & Study",
+      "Doors & Custom Woodwork"
+    ];
+
+    const DEFAULT_SHOP = {
+      name: "New Modern Wood Work",
+      owner: "Kumabum Kalachan Singh",
+      badge: "Handcrafted Solid Wood Furniture",
+      address: "Jiribam, Hilghat, Sorok Atingbi, Manipur 795116",
+      phone: "+919612454569",
+      whatsapp: "919612454569",
+      passHash: ""
+    };
+
+    const DEFAULT_ITEMS = [
+      {
+        id: "item-1",
+        title: "Handcrafted Solid Teak Double Bed",
+        price: 28500,
+        category: "Bedroom",
+        condition: "Brand New",
+        material: "Solid Teak Wood",
+        dimensions: "6ft x 6.5ft (King Size)",
+        delivery: "Pickup or Local Delivery",
+        description: "Heavy-duty handcrafted teak wood bed with natural glossy polish and spacious box storage.",
+        image: "",
+        sold: false,
+        likes: 12,
+        comments: [
+          { id: "c1", author: "Sanatomba", text: "Is mattress included or bed frame only?" }
+        ]
+      },
+      {
+        id: "item-2",
+        title: "3-Seater Modern Wooden Sofa Set",
+        price: 16500,
+        category: "Living Room",
+        condition: "Brand New",
+        material: "Seasoned Teak & Sal Wood",
+        dimensions: "6ft Length",
+        delivery: "Pickup or Local Delivery",
+        description: "Sturdy solid wood sofa frame with comfortable high-density foam cushions.",
+        image: "",
+        sold: false,
+        likes: 9,
+        comments: []
+      },
+      {
+        id: "item-3",
+        title: "6-Seater Classic Wooden Dining Set",
+        price: 22000,
+        category: "Dining & Kitchen",
+        condition: "Brand New",
+        material: "Seasoned Hardwood",
+        dimensions: "5ft x 3ft Table + 6 Chairs",
+        delivery: "Pickup or Local Delivery",
+        description: "Elegant 6-seater dining table with matching cushioned wooden chairs in walnut polish.",
+        image: "",
+        sold: false,
+        likes: 15,
+        comments: []
+      },
+      {
+        id: "item-4",
+        title: "Executive Wooden Office & Study Desk",
+        price: 9500,
+        category: "Office & Study",
+        condition: "Brand New",
+        material: "Teak Finish Hardwood",
+        dimensions: "4ft x 2ft",
+        delivery: "Pickup or Local Delivery",
+        description: "Smooth-finish office table with three lockable side drawers and keyboard tray.",
+        image: "",
+        sold: false,
+        likes: 6,
+        comments: []
+      },
+      {
+        id: "item-5",
+        title: "Carved Main Entrance Teak Door",
+        price: 18500,
+        category: "Doors & Custom Woodwork",
+        condition: "Custom Order",
+        material: "1st Class Teak Wood",
+        dimensions: "7ft x 3.5ft (1.5 inch thick)",
+        delivery: "Made to Order",
+        description: "Traditional hand-carved main door made to exact frame measurements with weather-resistant polish.",
+        image: "",
+        sold: false,
+        likes: 19,
+        comments: []
+      }
+    ];
+
+    let shop = JSON.parse(localStorage.getItem("nmww_shop_v3")) || DEFAULT_SHOP;
+    let items = JSON.parse(localStorage.getItem("nmww_items_v3")) || DEFAULT_ITEMS;
+    let likedIds = JSON.parse(localStorage.getItem("nmww_likes_v3")) || [];
+    let buyer = JSON.parse(localStorage.getItem("nmww_buyer_v3")) || null;
+    let isOwner = false;
+    let showSavedOnly = false;
+    let selectedCategory = "All";
+    let activeOfferItem = null;
+    let activeCommentItemId = null;
+    let uploadedPhotoData = "";
+
+    function escapeHtml(str) {
+      return String(str || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    async function sha256(message) {
+      const msgBuffer = new TextEncoder().encode(message);
+      const hashBuffer = await crypto.subtle.digest("SHA-256", msgBuffer);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+    }
+
+    function persistState() {
+      localStorage.setItem("nmww_shop_v3", JSON.stringify(shop));
+      localStorage.setItem("nmww_items_v3", JSON.stringify(items));
+      localStorage.setItem("nmww_likes_v3", JSON.stringify(likedIds));
+      localStorage.setItem("nmww_buyer_v3", JSON.stringify(buyer));
+    }
+
+    function renderHeader() {
+      document.getElementById("hdrBadge").textContent = shop.badge;
+      document.getElementById("hdrShopName").textContent = shop.name;
+      document.getElementById("hdrOwnerName").textContent = shop.owner;
+      document.getElementById("hdrAddress").textContent = shop.address;
+      const phoneLink = document.getElementById("hdrPhoneLink");
+      phoneLink.textContent = shop.phone;
+      phoneLink.href = "tel:" + shop.phone;
+      document.title = shop.name + " | Jiribam, Manipur";
+
+      const adminBar = document.getElementById("adminToolbar");
+      const topOwnerBtn = document.getElementById("topOwnerBtn");
+      const bottomEditBtn = document.getElementById("btnBottomEdit");
+
+      if (isOwner) {
+        adminBar.classList.add("visible");
+        topOwnerBtn.textContent = "Owner Active";
+        bottomEditBtn.classList.add("active");
+        bottomEditBtn.textContent = "Edit Mode";
+      } else {
+        adminBar.classList.remove("visible");
+        topOwnerBtn.textContent = "Owner Login";
+        bottomEditBtn.classList.remove("active");
+        bottomEditBtn.textContent = "Edit";
+      }
+
+      const buyerBtn = document.getElementById("btnBuyerLogin");
+      buyerBtn.textContent = buyer ? buyer.name : "Buyer Login";
+      document.getElementById("savedCount").textContent = likedIds.length;
+    }
+
+    function renderCategoryPills() {
+      const container = document.getElementById("categoryPills");
+      container.innerHTML = CATEGORIES.map(cat => `
+        <button class="pill ${selectedCategory === cat ? "active" : ""}" onclick="selectCategory('${cat}')">
+          ${escapeHtml(cat)}
+        </button>
+      `).join("");
+    }
+
+    function selectCategory(cat) {
+      selectedCategory = cat;
+      document.getElementById("categorySelect").value = cat;
+      renderCategoryPills();
+      renderItems();
+    }
+
+    function syncCategoryFromSelect() {
+      selectedCategory = document.getElementById("categorySelect").value;
+      renderCategoryPills();
+      renderItems();
+    }
+
+    function updatePriceFilter() {
+      const val = Number(document.getElementById("maxPriceRange").value);
+      document.getElementById("maxPriceLabel").textContent = "₹" + val.toLocaleString("en-IN");
+      renderItems();
+    }
+
+    function setSavedView(saved) {
+      showSavedOnly = saved;
+      document.getElementById("btnAllView").classList.toggle("active", !saved);
+      document.getElementById("btnSavedView").classList.toggle("active", saved);
+      renderItems();
+    }
+
+    function renderItems() {
+      const query = document.getElementById("searchInput").value.toLowerCase();
+      const cond = document.getElementById("conditionSelect").value;
+      const maxP = Number(document.getElementById("maxPriceRange").value);
+
+      const filtered = items.filter(item => {
+        if (showSavedOnly && !likedIds.includes(item.id)) return false;
+        if (selectedCategory !== "All" && item.category !== selectedCategory) return false;
+        if (cond !== "All" && item.condition !== cond) return false;
+        if (item.price > maxP) return false;
+        if (query) {
+          const hay = (item.title + " " + item.material + " " + item.category + " " + item.description).toLowerCase();
+          if (!hay.includes(query)) return false;
+        }
+        return true;
+      });
+
+      const grid = document.getElementById("furnitureGrid");
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1;">No furniture items match your filter. Try selecting "All" categories.</div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(item => {
+        const isLiked = likedIds.includes(item.id);
+        const commentCount = (item.comments || []).length;
+        const imgBlock = item.image
+          ? `<img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.title)}" />`
+          : `<div class="svg-placeholder">
+               <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#78350f" stroke-width="1.6">
+                 <path d="M4 18v3M20 18v3M2 14h20v4H2zM5 14V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v7"/>
+               </svg>
+               <span style="margin-top:6px;">${escapeHtml(item.category)}</span>
+             </div>`;
+
+        return `
+          <div class="card ${item.sold ? "sold" : ""}">
+            <div>
+              <div class="card-img-wrap">
+                ${imgBlock}
+                <span class="cat-tag">${escapeHtml(item.category)}</span>
+                ${item.sold ? `<span class="sold-badge">Sold Out</span>` : ""}
+              </div>
+              <div class="card-body">
+                <div class="card-title-row">
+                  <div class="card-title">${escapeHtml(item.title)}</div>
+                  <div class="card-price">₹${Number(item.price).toLocaleString("en-IN")}</div>
+                </div>
+                <div class="meta">${escapeHtml(item.material)} • ${escapeHtml(item.dimensions)} • ${escapeHtml(item.condition)}</div>
+                <div class="desc">${escapeHtml(item.description)}</div>
+                <div class="delivery-tag">${escapeHtml(item.delivery)}</div>
+              </div>
+            </div>
+            <div class="card-actions">
+              <div class="btn-row">
+                <button class="btn btn-wa" ${item.sold ? "disabled" : ""} onclick="inquireWhatsApp('${item.id}')">WhatsApp</button>
+                <button class="btn btn-offer" ${item.sold ? "disabled" : ""} onclick="openOfferModal('${item.id}')">Make Offer</button>
+              </div>
+              <div class="social-bar">
+                <button class="social-btn ${isLiked ? "liked" : ""}" onclick="toggleLike('${item.id}')">
+                  ${isLiked ? "♥" : "♡"} Like (${item.likes || 0})
+                </button>
+                <button class="social-btn" onclick="openCommentModal('${item.id}')">
+                  💬 Comment (${commentCount})
+                </button>
+                <button class="social-btn" onclick="shareItem('${item.id}')">
+                  ↗ Share
+                </button>
+              </div>
+              <div class="owner-card-controls ${isOwner ? "visible" : ""}">
+                <button class="btn btn-outline" style="padding:6px;font-size:11.5px;" onclick="openEditItemModal('${item.id}')">Edit</button>
+                <button class="btn btn-outline" style="padding:6px;font-size:11.5px;" onclick="toggleSold('${item.id}')">${item.sold ? "Available" : "Mark Sold"}</button>
+                <button class="btn btn-danger" style="padding:6px;font-size:11.5px;" onclick="deleteItem('${item.id}')">Delete</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    document.getElementById("topOwnerBtn").onclick = handleBottomEditClick;
+
+    function handleBottomEditClick() {
+      if (isOwner) {
+        openAddModal();
+        return;
+      }
+      document.getElementById("pinInput").value = "";
+      if (!shop.passHash) {
+        document.getElementById("pinModalTitle").textContent = "Create Owner Passcode";
+        document.getElementById("pinModalDesc").textContent =
+          "Set a private passcode for the first time to protect your shop editor.";
+      } else {
+        document.getElementById("pinModalTitle").textContent = "Owner Security Login";
+        document.getElementById("pinModalDesc").textContent =
+          "Enter your private Owner Passcode to add or edit furniture items.";
+      }
+      openModal("pinModal");
+    }
+
+    async function submitOwnerPasscode() {
+      const val = document.getElementById("pinInput").value.trim();
+      if (!val) return;
+      const hashed = await sha256(val);
+      if (!shop.passHash) {
+        shop.passHash = hashed;
+        isOwner = true;
+        persistState();
+        closeModal("pinModal");
+        renderHeader();
+        renderItems();
+      } else if (hashed === shop.passHash) {
+        isOwner = true;
+        closeModal("pinModal");
+        renderHeader();
+        renderItems();
+      } else {
+        alert("Incorrect Owner Passcode.");
+      }
+    }
+
+    function lockOwnerMode() {
+      isOwner = false;
+      renderHeader();
+      renderItems();
+    }
+
+    function openAddModal() {
+      document.getElementById("itemModalTitle").textContent = "Add Furniture Item";
+      document.getElementById("editItemId").value = "";
+      document.getElementById("itemTitle").value = "";
+      document.getElementById("itemPrice").value = "";
+      document.getElementById("itemCategory").value = "Living Room";
+      document.getElementById("itemCondition").value = "Brand New";
+      document.getElementById("itemMaterial").value = "";
+      document.getElementById("itemDimensions").value = "";
+      document.getElementById("itemDelivery").value = "Pickup or Local Delivery";
+      document.getElementById("itemDescription").value = "";
+      document.getElementById("itemPhotoFile").value = "";
+      uploadedPhotoData = "";
+      document.getElementById("photoPreviewWrap").style.display = "none";
+      openModal("itemModal");
+    }
+
+    function openEditItemModal(id) {
+      const item = items.find(i => i.id === id);
+      if (!item) return;
+      document.getElementById("itemModalTitle").textContent = "Edit Furniture Item";
+      document.getElementById("editItemId").value = item.id;
+      document.getElementById("itemTitle").value = item.title;
+      document.getElementById("itemPrice").value = item.price;
+      document.getElementById("itemCategory").value = item.category;
+      document.getElementById("itemCondition").value = item.condition;
+      document.getElementById("itemMaterial").value = item.material;
+      document.getElementById("itemDimensions").value = item.dimensions;
+      document.getElementById("itemDelivery").value = item.delivery;
+      document.getElementById("itemDescription").value = item.description;
+      uploadedPhotoData = item.image || "";
+      if (uploadedPhotoData) {
+        document.getElementById("photoPreviewImg").src = uploadedPhotoData;
+        document.getElementById("photoPreviewWrap").style.display = "block";
+      } else {
+        document.getElementById("photoPreviewWrap").style.display = "none";
+      }
+      openModal("itemModal");
+    }
+
+    function handlePhotoSelect(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        uploadedPhotoData = evt.target.result;
+        document.getElementById("photoPreviewImg").src = uploadedPhotoData;
+        document.getElementById("photoPreviewWrap").style.display = "block";
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function saveFurnitureItem(e) {
+      e.preventDefault();
+      if (!isOwner) return;
+      const editId = document.getElementById("editItemId").value;
+      const itemObj = {
+        id: editId || "item-" + Date.now(),
+        title: document.getElementById("itemTitle").value.trim(),
+        price: Number(document.getElementById("itemPrice").value),
+        category: document.getElementById("itemCategory").value,
+        condition: document.getElementById("itemCondition").value,
+        material: document.getElementById("itemMaterial").value.trim() || "Solid Hardwood",
+        dimensions: document.getElementById("itemDimensions").value.trim() || "Standard Size",
+        delivery: document.getElementById("itemDelivery").value,
+        description: document.getElementById("itemDescription").value.trim(),
+        image: uploadedPhotoData,
+        sold: false,
+        likes: 0,
+        comments: []
+      };
+
+      if (editId) {
+        const idx = items.findIndex(i => i.id === editId);
+        if (idx > -1) {
+          itemObj.sold = items[idx].sold;
+          itemObj.likes = items[idx].likes;
+          itemObj.comments = items[idx].comments;
+          items[idx] = itemObj;
+        }
+      } else {
+        items.unshift(itemObj);
+      }
+
+      persistState();
+      closeModal("itemModal");
+      renderItems();
+    }
+
+    function toggleSold(id) {
+      if (!isOwner) return;
+      const item = items.find(i => i.id === id);
+      if (item) {
+        item.sold = !item.sold;
+        persistState();
+        renderItems();
+      }
+    }
+
+    function deleteItem(id) {
+      if (!isOwner) return;
+      if (!confirm("Delete this furniture listing?")) return;
+      items = items.filter(i => i.id !== id);
+      persistState();
+      renderItems();
+    }
+
+    function openShopModal() {
+      if (!isOwner) return;
+      document.getElementById("editShopName").value = shop.name;
+      document.getElementById("editOwnerName").value = shop.owner;
+      document.getElementById("editBadge").value = shop.badge;
+      document.getElementById("editAddress").value = shop.address;
+      document.getElementById("editPhone").value = shop.phone;
+      document.getElementById("editWhatsapp").value = shop.whatsapp;
+      document.getElementById("editNewPasscode").value = "";
+      openModal("shopModal");
+    }
+
+    async function saveShopDetails(e) {
+      e.preventDefault();
+      if (!isOwner) return;
+      shop.name = document.getElementById("editShopName").value.trim();
+      shop.owner = document.getElementById("editOwnerName").value.trim();
+      shop.badge = document.getElementById("editBadge").value.trim();
+      shop.address = document.getElementById("editAddress").value.trim();
+      shop.phone = document.getElementById("editPhone").value.trim();
+      shop.whatsapp = document.getElementById("editWhatsapp").value.replace(/\D/g, "");
+      const newPass = document.getElementById("editNewPasscode").value.trim();
+      if (newPass) {
+        shop.passHash = await sha256(newPass);
+      }
+      persistState();
+      closeModal("shopModal");
+      renderHeader();
+    }
+
+    function exportHtmlFile() {
+      if (!isOwner) return;
+      const clone = document.documentElement.cloneNode(true);
+      const scriptTag = clone.querySelector("#store-data-script");
+      if (scriptTag) {
+        let code = scriptTag.textContent;
+        code = code.replace(/const DEFAULT_SHOP = \{[\s\S]*?\};/, "const DEFAULT_SHOP = " + JSON.stringify(shop, null, 2) + ";");
+        code = code.replace(/const DEFAULT_ITEMS = \[[\s\S]*?\];/, "const DEFAULT_ITEMS = " + JSON.stringify(items, null, 2) + ";");
+        scriptTag.textContent = code;
+      }
+      const blob = new Blob(["<!DOCTYPE html>\n" + clone.outerHTML], { type: "text/html" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "index.html";
+      a.click();
+    }
+
+    function inquireWhatsApp(id) {
+      const item = items.find(i => i.id === id);
+      if (!item) return;
+      const buyerTag = buyer ? `\nBuyer: ${buyer.name}${buyer.city ? " (" + buyer.city + ")" : ""}` : "";
+      const msg = `Hello ${shop.owner} (${shop.name}), I am interested in:\n*${item.title}* (${item.category})\nPrice: ₹${Number(item.price).toLocaleString("en-IN")}${buyerTag}\nIs this available?`;
+      window.open(`https://wa.me/${shop.whatsapp}?text=${encodeURIComponent(msg)}`, "_blank");
+    }
+
+    function openOfferModal(id) {
+      activeOfferItem = items.find(i => i.id === id);
+      if (!activeOfferItem) return;
+      document.getElementById("offerItemSummary").textContent =
+        `${activeOfferItem.title} — Listed at ₹${Number(activeOfferItem.price).toLocaleString("en-IN")}`;
+      document.getElementById("offerAmount").value = "";
+      document.getElementById("offerNote").value = buyer && buyer.city ? `Delivery location: ${buyer.city}` : "";
+      openModal("offerModal");
+    }
+
+    function sendOfferWhatsApp(e) {
+      e.preventDefault();
+      if (!activeOfferItem) return;
+      const offer = Number(document.getElementById("offerAmount").value);
+      const note = document.getElementById("offerNote").value.trim();
+      const buyerTag = buyer ? `\nFrom: ${buyer.name}${buyer.phone ? " (" + buyer.phone + ")" : ""}` : "";
+      const msg = `Hello ${shop.owner} (${shop.name}), I want to make an offer:\n*Item:* ${activeOfferItem.title}\n*Listed Price:* ₹${Number(activeOfferItem.price).toLocaleString("en-IN")}\n*My Offer:* ₹${offer.toLocaleString("en-IN")}${buyerTag}\n*Note:* ${note || "Please let me know."}`;
+      window.open(`https://wa.me/${shop.whatsapp}?text=${encodeURIComponent(msg)}`, "_blank");
+      closeModal("offerModal");
+    }
+
+    function toggleLike(id) {
+      const item = items.find(i => i.id === id);
+      if (!item) return;
+      if (likedIds.includes(id)) {
+        likedIds = likedIds.filter(x => x !== id);
+        item.likes = Math.max(0, (item.likes || 1) - 1);
+      } else {
+        likedIds.push(id);
+        item.likes = (item.likes || 0) + 1;
+      }
+      persistState();
+      renderHeader();
+      renderItems();
+    }
+
+    function openCommentModal(id) {
+      activeCommentItemId = id;
+      const item = items.find(i => i.id === id);
+      if (!item) return;
+      document.getElementById("commentModalTitle").textContent = item.title;
+      document.getElementById("commentAuthor").value = buyer ? buyer.name : "";
+      document.getElementById("commentText").value = "";
+      renderCommentsList(item);
+      openModal("commentModal");
+    }
+
+    function renderCommentsList(item) {
+      const list = document.getElementById("commentList");
+      const comments = item.comments || [];
+      if (comments.length === 0) {
+        list.innerHTML = `<div style="font-size:13px;color:#78716c;text-align:center;padding:12px;">No comments yet. Ask a question below!</div>`;
+        return;
+      }
+      list.innerHTML = comments.map(c => `
+        <div class="comment-item">
+          <div>
+            <strong>${escapeHtml(c.author)}:</strong> ${escapeHtml(c.text)}
+          </div>
+          ${isOwner ? `<button class="btn btn-danger" style="padding:2px 6px;font-size:11px;" onclick="deleteComment('${item.id}','${c.id}')">Del</button>` : ""}
+        </div>
+      `).join("");
+    }
+
+    function postComment(e) {
+      e.preventDefault();
+      const item = items.find(i => i.id === activeCommentItemId);
+      if (!item) return;
+      const author = document.getElementById("commentAuthor").value.trim();
+      const text = document.getElementById("commentText").value.trim();
+      if (!author || !text) return;
+      item.comments = item.comments || [];
+      item.comments.push({ id: "c-" + Date.now(), author, text });
+      persistState();
+      document.getElementById("commentText").value = "";
+      renderCommentsList(item);
+      renderItems();
+    }
+
+    function deleteComment(itemId, commentId) {
+      if (!isOwner) return;
+      const item = items.find(i => i.id === itemId);
+      if (!item) return;
+      item.comments = (item.comments || []).filter(c => c.id !== commentId);
+      persistState();
+      renderCommentsList(item);
+      renderItems();
+    }
+
+    function shareItem(id) {
+      const item = items.find(i => i.id === id);
+      if (!item) return;
+      const shareText = `${item.title} — ₹${Number(item.price).toLocaleString("en-IN")} at ${shop.name} (${shop.address}). Contact: ${shop.phone}`;
+      if (navigator.share) {
+        navigator.share({ title: item.title, text: shareText, url: window.location.href }).catch(() => {});
+      } else {
+        navigator.clipboard.writeText(shareText + " " + window.location.href);
+        alert("Listing details copied! You can paste and share on WhatsApp.");
+      }
+    }
+
+    function openBuyerModal() {
+      document.getElementById("buyerName").value = buyer ? buyer.name : "";
+      document.getElementById("buyerPhone").value = buyer ? buyer.phone : "";
+      document.getElementById("buyerCity").value = buyer ? buyer.city : "";
+      document.getElementById("buyerLogoutBtn").style.display = buyer ? "inline-block" : "none";
+      openModal("buyerModal");
+    }
+
+    function saveBuyerProfile(e) {
+      e.preventDefault();
+      buyer = {
+        name: document.getElementById("buyerName").value.trim(),
+        phone: document.getElementById("buyerPhone").value.trim(),
+        city: document.getElementById("buyerCity").value.trim()
+      };
+      persistState();
+      closeModal("buyerModal");
+      renderHeader();
+    }
+
+    function logoutBuyer() {
+      buyer = null;
+      persistState();
+      closeModal("buyerModal");
+      renderHeader();
+    }
+
+    function openModal(id) { document.getElementById(id).classList.add("open"); }
+    function closeModal(id) { document.getElementById(id).classList.remove("open"); }
+
+    renderHeader();
+    renderCategoryPills();
+    renderItems();
+  </script>
+</body>
+</html>
